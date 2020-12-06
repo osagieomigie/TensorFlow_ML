@@ -59,6 +59,11 @@ def check_args():
             x_test, y_test = f["x_test"], f["y_test"]
         x_test = x_test / 255.0
         # x_train, x_test = x_train / 255.0, x_test / 255.0
+
+        # reshape data because of CNN
+        x_test = x_test.reshape(len(y_test), 28, 28, 1)
+        #    if sys.argv[2] == "notMNIST2.h5" or sys.argv[2] == "notMNIST3.h5":
+        #      x_test = x_test.reshape(len(y_test), 28, 28, 1)
         data = (x_test, y_test)
     else:
         print(f"Choose MNIST or notMNIST, not {sys.argv[1]}")
